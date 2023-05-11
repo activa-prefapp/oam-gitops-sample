@@ -14,7 +14,7 @@ spec:
         version: "0.3.2"
         values:
           webService:
-            image: 
+            image: oam-app-test:latest
           deployment:
             containerPort: 80
           service:
