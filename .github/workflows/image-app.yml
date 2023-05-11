@@ -2,11 +2,11 @@ name: Docker Build and Publish
 on:
   push:
     branches:
-      - sample-test
+      - main
 
 env:
-  IMAGE_NAME: oam-app-test
-  IMAGE_TAG: ${{ env.COMMIT_SHA }}
+  IMAGE_NAME: my-image-name
+  IMAGE_TAG: ${{ github.sha }}
 
 jobs:
   build-and-publish:
@@ -17,10 +17,6 @@ jobs:
         with:
           fetch-depth: 0
       
-      - name: Get latest commit SHA
-        uses: luka-zitnik/github-set-output-to-latest-commit@v1
-        id: latest_commit
-        
       - name: Build Docker image
         run: docker build -t ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} .
       
@@ -33,3 +29,4 @@ jobs:
       
       - name: Push Docker image to GitHub Container Registry
         run: docker push ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+
