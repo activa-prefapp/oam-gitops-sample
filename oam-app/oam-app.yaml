@@ -1,11 +1,11 @@
 apiVersion: core.oam.dev/v1beta1
 kind: Application
 metadata:
-  name: aws-web-service
+  name: oam-app-test
   # namespace: default
 spec:
   components:
-    - name: aws-service
+    - name: oam-app-test
       type: helm
       properties:
         repoType: "helm"
