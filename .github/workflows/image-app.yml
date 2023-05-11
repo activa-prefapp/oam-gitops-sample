@@ -34,5 +34,5 @@ jobs:
       
       - name: Update YAML file
         run: |
-          sed -i "s|image: .*|image: ${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}|g" oam-app/oam-app.yaml
+          sed -i "s|image: ghcr.io/.*|image: ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}|g" oam-app/oam-app.yaml
         shell: bash
