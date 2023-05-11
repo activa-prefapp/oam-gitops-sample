@@ -2,10 +2,10 @@ name: Docker Build and Publish
 on:
   push:
     branches:
-      - main
+      - sample-test
 
 env:
-  IMAGE_NAME: my-image-name
+  IMAGE_NAME: oam-app-test
   IMAGE_TAG: ${{ github.sha }}
 
 jobs:
