@@ -51,4 +51,11 @@ jobs:
           git commit -m "Update image to ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}"
           git push https://${{ secrets.REGISTRY_TOKEN }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
         shell: bash
+
+      - name: Print actor and image information
+        run: |
+          echo "Actor: ${{ github.actor }}"
+          echo "Actor email: $(git log -1 --format='%ae')"
+          echo "Image: ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}"
+
     
