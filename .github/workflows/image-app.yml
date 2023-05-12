@@ -42,5 +42,5 @@ jobs:
           git config --global user.email "david.ventura@davma.io"
           git add oam-app/oam-app.yaml
           git commit -m "Update image to ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}"
-          git push https://davma-io:${{ secrets.REGISTRY_TOKEN }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
+          git push https://davma-io:${{ secrets.PUSH_TOKEN }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
         shell: bash
