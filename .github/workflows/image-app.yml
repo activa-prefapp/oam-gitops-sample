@@ -42,3 +42,12 @@ jobs:
           # Update image in YAML file
           yq eval '.spec.components[].properties.values.webService.image = "ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}"' oam-app/oam-app.yaml -i
         shell: bash
+      
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          git add oam-app/oam-app.yaml
+          git commit -m "Update image to ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}"
+          git push
+        shell: bash
