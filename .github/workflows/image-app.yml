@@ -34,7 +34,7 @@ jobs:
       
       - name: Update YAML file
         env:
-          REGISTRY_TOKEN: ${{ secrets.REGISTRY_TOKEN }}
+          PUSH_TOKEN: ${{ secrets.PUSH_TOKEN }}
         run: |
           # Update image in YAML file
           sed -i "s#image:.*#image: ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}#" oam-app/oam-app.yaml
@@ -44,6 +44,6 @@ jobs:
           git config --global user.email "david.ventura@davma.io"
           git add oam-app/oam-app.yaml
           git commit -m "Update image to ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}"
-          git push https://${{ secrets.REGISTRY_TOKEN }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
+          git push https://${{ secrets.PUSH_TOKEN }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
         shell: bash
     
