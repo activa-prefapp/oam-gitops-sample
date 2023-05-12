@@ -34,13 +34,13 @@ jobs:
       
       - name: Update YAML file
         env:
-          GITHUB_TOKEN: ${{ secrets.REGISTRY_TOKEN  }}
+          GITHUB_TOKEN: ${{ secrets.REGISTRY_TOKEN }}
         run: |
           # Install yq
           sudo add-apt-repository ppa:rmescandon/yq
           sudo apt-get update
           sudo apt-get install yq -y
-
+      
           # Update image in YAML file
           yq eval '.spec.components[].properties.values.webService.image = "ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}"' oam-app/oam-app.yaml -i
           
@@ -49,5 +49,6 @@ jobs:
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
           git add oam-app/oam-app.yaml
           git commit -m "Update image to ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}"
-          git push origin HEAD:${{ github.ref }}
+          git push https://${{ secrets.REGISTRY_TOKEN }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }} --force-with-lease
         shell: bash
+    
