@@ -2,9 +2,9 @@ name: Docker Build and Publish
 on:
   push:
     branches:
-      - sample-test
-    # paths:
-    #   - "app/**"
+      - main
+    paths:
+      - "app/**"
 
 env:
   IMAGE_NAME: oam-app-test
