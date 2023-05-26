@@ -23,4 +23,3 @@ For the automatic deployment of the application in your cluster it will be neces
 
 For this example, another oam application has been configured as a drop-down application. The manifest declared in the oam-app directory is a modification of the one already configured in the [oam-applications]() repository. You can find all the necessary information for this deployment, configurations and requirements in the [aws-web-service]() directory of the [oam-applications]() repository.
 
-
