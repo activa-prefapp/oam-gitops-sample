@@ -14,8 +14,7 @@ spec:
         version: "0.3.2"
         values:
           webService:
-            # image: ghcr.io/activa-prefapp/oam-app-test:47bfcf9b0d061e46c66d7027971f4245f2e570e4
-            image: ubuntu/nginx:latest
+            image: ghcr.io/activa-prefapp/oam-app-test:47bfcf9b0d061e46c66d7027971f4245f2e570e4
           deployment:
             containerPort: 80
           service:
