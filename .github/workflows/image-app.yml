@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - sample-test
+      # - main
     paths:
       - "app/**"
 
