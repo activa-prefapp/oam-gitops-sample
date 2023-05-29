@@ -5,7 +5,7 @@ The purpose of this repository is to serve as an example and basis for a complet
 
 __If you have access to the repository, you will be able to make modifications to the files in the app/ directory, you will be able to see the changes made when the update flow finishes in the url: https://oam-gitops-sample.activa.napptive.dev/__
 
-__Remember that this is an example repository. To replicate this deployment in your cluster you will need to comply with all the requirements and make the necessary modifications to host, certificates, secrets, and other information.__
+__Remember that this is an example repository. To replicate this deployment in your cluster you will need to comply with all the requirements and make the necessary modifications to namespace, secrets, host, certificates, and other information.__
 
 
 
