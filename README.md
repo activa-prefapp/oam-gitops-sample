@@ -43,9 +43,9 @@ The configuration of the secrets used for this deployment can be found in the or
 
 ## Deployment of KubeVela GitOps application
 
-Once all the requirements defined above are met you can deploy a GitOps application with FluxCD in KubeVela as per [official documentation](). In this example the application that will be in charge of deploying the components in the infrastructure directory is defined in the [oam-applications]() repository in [oam-applications/gitops-application]().
+Once all the requirements defined above are met you can deploy a GitOps application with FluxCD in KubeVela as per [official documentation](https://kubevela.io/docs/end-user/gitops/fluxcd#preparing-the-configuration-repository). In this example the application that will be in charge of deploying the components in the infrastructure directory is defined in the [oam-applications](https://github.com/activa-prefapp/oam-applications) repository in [oam-applications/gitops-application]().
 
-To perform the deployment download the [oam-applications]() repository, go to the specified directory and deploy the application with the command:
+To perform the deployment download the [oam-applications](https://github.com/activa-prefapp/oam-applications) repository, go to the specified directory and deploy the application with the command:
 
 ```
 vela up -f infra-gitops-app.yaml
