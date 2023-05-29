@@ -32,10 +32,25 @@
 			position: absolute;
 			bottom: 0;
 			width: 100%;
+			display: flex;
+			justify-content: space-between;
+		}
+		footer p {
+			margin: 0;
+			text-align: left;
+		}
+		footer div {
+			padding: 10px;
+			margin: 0 10px;
 		}
 		a {
 			color: #fff;
 			text-decoration: none;
+		}
+		img {
+			padding: 10px;
+			max-width: 200px;
+			height: auto;
 		}
 	</style>
 </head>
@@ -46,16 +61,20 @@
 	<section>
 		<p>This web application has been deployed with GitOps on Kubernetes using KubeVela and its GitOps complement FluxCD.</p>
 	</section>
-    <!-- <section>
-		<p>This web application has been deployed with GitOps on Kubernetes using KubeVela and its GitOps complement FluxCD.</p>
-	</section> -->
-    <!-- <section>
-		<p>This web application has been deployed with GitOps on Kubernetes using KubeVela and its GitOps complement FluxCD.</p>
-	</section> -->
 	<footer>
-		<p>Repositorios:</p>
+		<div>
+			<p>Organization repositories:</p>
 			<p><a href="https://github.com/activa-prefapp/oam-applications" target="_blank">https://github.com/activa-prefapp/oam-applications</a></p>
 			<p><a href="https://github.com/activa-prefapp/oam-gitops_sample" target="_blank">https://github.com/activa-prefapp/oam-gitops_sample</a></p>
+		</div>
+		<div>
+			<a href="https://napptive.com/" target="_blank"><img src="https://napptive.com/wp-content/uploads/2022/02/Logo-medium-light.png" alt="Imagen 1"></a>
+			<a href="https://prefapp.es/" target="_blank"><img src="https://prefapp.github.io/images/company_logo_blanco.png" alt="Imagen 2"></a>
+		</div>
+		<div>
+			<p></p>
+		</div>
 	</footer>
 </body>
 </html>
+
