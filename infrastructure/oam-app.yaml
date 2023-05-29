@@ -17,7 +17,7 @@ spec:
             git-registry-secret:
               - name: git-registry-secret
           webService:
-            image: ghcr.io/activa-prefapp/oam-app-test:47bfcf9b0d061e46c66d7027971f4245f2e570e4
+            image: ghcr.io/activa-prefapp/oam-app-test:27a3f2c448c89c6c72c7ebe3e9000515dc909b95
           deployment:
             containerPort: 80
           service:
