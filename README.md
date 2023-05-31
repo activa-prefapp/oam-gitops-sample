@@ -1,5 +1,7 @@
 # OAM gitops sample
 
+[![Docker Build and Publish](https://github.com/activa-prefapp/oam-gitops-sample/actions/workflows/image-app.yml/badge.svg)](https://github.com/activa-prefapp/oam-gitops-sample/actions/workflows/image-app.yml)
+
 Repository for configuration, evaluation and development of gitops integrations with kubevela.
 
 The purpose of this repository is to serve as an example and basis for a complete integration using github actions and gitops configurations in a kubernetes cluster.
