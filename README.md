@@ -1,5 +1,7 @@
 # OAM gitops sample
 
+__This branch is obsolete__
+
 [![Docker Build and Publish](https://github.com/activa-prefapp/oam-gitops-sample/actions/workflows/image-app.yml/badge.svg)](https://github.com/activa-prefapp/oam-gitops-sample/actions/workflows/image-app.yml)
 
 Repository for configuration, evaluation and development of gitops integrations with kubevela.
