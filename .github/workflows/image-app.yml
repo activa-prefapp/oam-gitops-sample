@@ -1,61 +1,61 @@
-name: Docker Build and Publish
-on:
-  push:
-    branches:
-      - sample-test
-      # - main
-    paths:
-      - "app/**"
+# name: Docker Build and Publish
+# on:
+#   push:
+#     branches:
+#       - sample-test
+#       # - main
+#     paths:
+#       - "app/**"
 
-env:
-  IMAGE_NAME: gitops-app-test
-  IMAGE_TAG: ${{ github.sha }}
+# env:
+#   IMAGE_NAME: gitops-app-test
+#   IMAGE_TAG: ${{ github.sha }}
 
-jobs:
-  build-and-publish:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+# jobs:
+#   build-and-publish:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v2
+#         with:
+#           fetch-depth: 0
 
-      - name: Update version in index.html file
-        run: |
-          # Update version in index.html file
-          sed -i "s#<p>version:.*</p>#<p>version: ${{ env.IMAGE_TAG }}</p>#" app/index.html
+#       - name: Update version in index.html file
+#         run: |
+#           # Update version in index.html file
+#           sed -i "s#<p>version:.*</p>#<p>version: ${{ env.IMAGE_TAG }}</p>#" app/index.html
 
-          # Commit and push changes
-          git config --global user.name "davma-io"
-          git config --global user.email "david.ventura@davma.io"
-          git add app/index.html
-          git commit -m "Update version in index.html file to ${{ env.IMAGE_TAG }}"
-          git push https://davma-io:${{ secrets.PUSH_TOKEN }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
-        shell: bash
+#           # Commit and push changes
+#           git config --global user.name "davma-io"
+#           git config --global user.email "david.ventura@davma.io"
+#           git add app/index.html
+#           git commit -m "Update version in index.html file to ${{ env.IMAGE_TAG }}"
+#           git push https://davma-io:${{ secrets.PUSH_TOKEN }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
+#         shell: bash
 
 
-      - name: Build Docker image
-        run: docker build -t ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} -f app/Dockerfile .
+#       - name: Build Docker image
+#         run: docker build -t ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} -f app/Dockerfile .
 
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v1
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.REGISTRY_TOKEN }}
+#       - name: Login to GitHub Container Registry
+#         uses: docker/login-action@v1
+#         with:
+#           registry: ghcr.io
+#           username: ${{ github.repository_owner }}
+#           password: ${{ secrets.REGISTRY_TOKEN }}
 
-      - name: Push Docker image to GitHub Container Registry
-        run: docker push ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+#       - name: Push Docker image to GitHub Container Registry
+#         run: docker push ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
 
-      - name: Update image in YAML file
-        run: |
-          # Update image in YAML file
-          sed -i "s#image:.*#image: ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}#" infrastructure/deployment-app.yaml
+#       - name: Update image in YAML file
+#         run: |
+#           # Update image in YAML file
+#           sed -i "s#image:.*#image: ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}#" infrastructure/deployment-app.yaml
 
-          # Commit and push changes
-          git config --global user.name "davma-io"
-          git config --global user.email "david.ventura@davma.io"
-          git add infrastructure/deployment-app.yaml
-          git commit -m "Update image to ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}"
-          git push https://davma-io:${{ secrets.PUSH_TOKEN }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
-        shell: bash
+#           # Commit and push changes
+#           git config --global user.name "davma-io"
+#           git config --global user.email "david.ventura@davma.io"
+#           git add infrastructure/deployment-app.yaml
+#           git commit -m "Update image to ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}"
+#           git push https://davma-io:${{ secrets.PUSH_TOKEN }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
+#         shell: bash
