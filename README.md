@@ -1,34 +1,32 @@
 # OAM gitops sample
+
 Repository for configuration, evaluation and development of gitops integrations with kubevela.
 
-The purpose of this repository is to serve as an example and basis for a complete integration using gitops and github actions configurations in a kubernetes cluster.
+The purpose of this repository is to serve as an example and basis for a complete integration using github actions and gitops configurations in a kubernetes cluster.
 
-__If you have access to the repository, you will be able to make modifications to the files in the app/ directory, you will be able to see the changes made when the update flow finishes in the url: https://oam-gitops-sample.activa.napptive.dev/__
+If you have access to the repository, you will be able to make modifications to the files in the app/ directory, you will be able to see the changes made when the update flow finishes in the url: https://oam-gitops-sample.activa.napptive.dev/__
 
-__Remember that this is an example repository. To replicate this deployment in your cluster you will need to comply with all the requirements and make the necessary modifications to namespace, secrets, host, certificates, and other information.__
-
-
-
+Remember that this is an example repository. To replicate this deployment in your cluster you will have to fulfill all the requirements and make the necessary modifications to namespace, secrets, host, certificates and other information.
 
 ## Repository structure and composition
 
 - app/ dockerfile and html index of the test application
 
-- infrastructure/ manifest of the application to be deployed using gitops configurations on kubernetes cluster
+- infrastructure/ manifest of the application to be deployed using gitops configurations in kubernetes cluster
 
-- github/workflows github manifest actions for automatic build of application image and version change in manifest on infrastructure/
+- github/workflows actions from github manifest for automatic build of application image and version change in manifest in infrastructure/
 
-## Infrastructure requirements
+## infrastructure requirements
 
 - Kubernetes cluster
 - KubeVela
 - FluxCD
 
-This example has been deployed on the EKS cluster using some of the components configured in the [oam-applications](https://github.com/activa-prefapp/oam-applications) repository.  
+This example has been deployed on the EKS cluster using some of the components configured in the [oam-applications] repository(https://github.com/activa-prefapp/oam-applications).  
 
 For the automatic deployment of the application in your cluster it will be necessary to configure and deploy a manifest as the one uploaded in the [oam-applications](https://github.com/activa-prefapp/oam-applications) repository in the [gitops-application]() section, which will be in charge of monitoring the changes in the components declared in this repository and perform the modifications in the cluster.
 
-For this example, another oam application has been configured as a deployable application. The manifest declared in the infrastructure/ directory is a modification of the one already configured in the [oam-applications](https://github.com/activa-prefapp/oam-applications) repository. You can find all the necessary information for this deployment, configurations and requirements in the [aws-web-service](https://github.com/activa-prefapp/oam-applications/tree/main/applications/aws-web-service) directory of the [oam-applications](https://github.com/activa-prefapp/oam-applications) repository.
+For this example, some components have been configured as a deployable application. You can find all the necessary information for this deployment, configurations and requirements in the [aws-web-service](https://github.com/activa-prefapp/oam-applications/tree/main/applications/aws-web-service) directory of the [oam-applications](https://github.com/activa-prefapp/oam-applications) repository.
 
 
 ## Kubernetes secret requirements
