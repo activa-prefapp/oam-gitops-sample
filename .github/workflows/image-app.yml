@@ -36,7 +36,7 @@ jobs:
       - name: Update image in YAML file
         run: |
           # Update image in YAML file
-          sed -i "/^[- ]\+imagen:/s#.*#image: ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}#" infrastructure/deployment-app.yaml
+          sed -i "s#image:.*#image: ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}#" infrastructure/deployment-app.yaml
 
       
           # Commit and push changes
