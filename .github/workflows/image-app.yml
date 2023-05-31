@@ -8,7 +8,7 @@ on:
       - "app/**"
 
 env:
-  IMAGE_NAME: oam-app-test
+  IMAGE_NAME: gitops-app-test
   IMAGE_TAG: ${{ github.sha }}
 
 jobs:
@@ -36,12 +36,13 @@ jobs:
       - name: Update image in YAML file
         run: |
           # Update image in YAML file
-          sed -i "s#image:.*#image: ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}#" infrastructure/oam-app.yaml
+          sed -i "/^[- ]\+imagen:/s#.*#image: ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}#" infrastructure/deployment-app.yaml
+
       
           # Commit and push changes
           git config --global user.name "davma-io"
           git config --global user.email "david.ventura@davma.io"
-          git add infrastructure/oam-app.yaml
+          git add infrastructure/deployment-app.yaml
           git commit -m "Update image to ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}"
           git push https://davma-io:${{ secrets.PUSH_TOKEN }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
         shell: bash
