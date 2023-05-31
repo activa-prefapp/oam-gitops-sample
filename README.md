@@ -1,5 +1,7 @@
 # OAM gitops sample
 
+[![Docker Build and Publish](https://github.com/activa-prefapp/oam-gitops-sample/actions/workflows/image-app.yml/badge.svg?branch=gitops-test)](https://github.com/activa-prefapp/oam-gitops-sample/actions/workflows/image-app.yml)
+
 Repository for configuration, evaluation and development of gitops integrations with kubevela.
 
 The purpose of this repository is to serve as an example and basis for a complete integration using github actions and gitops configurations in a kubernetes cluster.
@@ -22,7 +24,7 @@ __Remember that this is an example repository. To replicate this deployment in y
 - KubeVela
 - FluxCD
 
-This example has been deployed on the EKS cluster using some of the components configured in the [oam-applications] repository(https://github.com/activa-prefapp/oam-applications).  
+This example has been deployed on the EKS cluster using some of the components configured in the [oam-applications](https://github.com/activa-prefapp/oam-applications) repository.  
 
 For the automatic deployment of the application in your cluster it will be necessary to configure and deploy a manifest as the one uploaded in the [oam-applications](https://github.com/activa-prefapp/oam-applications) repository in the [gitops-application]() section, which will be in charge of monitoring the changes in the components declared in this repository and perform the modifications in the cluster.
 
