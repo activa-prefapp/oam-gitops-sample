@@ -20,6 +20,20 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Update version in index.html file
+        run: |
+          # Update version in index.html file
+          sed -i "s#<p>version:.*</p>#<p>version: ${{ env.IMAGE_TAG }}</p>#" app/index.html
+
+          # Commit and push changes
+          git config --global user.name "davma-io"
+          git config --global user.email "david.ventura@davma.io"
+          git add app/index.html
+          git commit -m "Update version in index.html file to ${{ env.IMAGE_TAG }}"
+          git push https://davma-io:${{ secrets.PUSH_TOKEN }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
+        shell: bash
+
+
       - name: Build Docker image
         run: docker build -t ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} -f app/Dockerfile .
 
@@ -38,7 +52,6 @@ jobs:
           # Update image in YAML file
           sed -i "s#image:.*#image: ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}#" infrastructure/deployment-app.yaml
 
-      
           # Commit and push changes
           git config --global user.name "davma-io"
           git config --global user.email "david.ventura@davma.io"
