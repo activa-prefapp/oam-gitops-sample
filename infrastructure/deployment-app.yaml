@@ -13,7 +13,7 @@ spec:
         app: gitops-test
     spec:
       containers:
-      - image: ghcr.io/activa-prefapp/gitops-app-test:7b8df062d94dece92f3e2c4d1a08009c25e72e13
+      - image: ghcr.io/activa-prefapp/gitops-app-test:515051d1a1423f990687d85ddb3f8f3b6cb8e467
         imagePullPolicy: IfNotPresent
         name: gitops-test
         ports:
