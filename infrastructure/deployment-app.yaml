@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gitops-test
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: gitops-test
+  template:
+    metadata:
+      labels:
+        app: gitops-test
+    spec:
+      containers:
+      - image: ghcr.io/activa-prefapp/oam-app-test:79926d290267262de33f0cdea1e47683441a8c2c
+        imagePullPolicy: IfNotPresent
+        name: gitops-test
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 100m
+            memory: 250Mi
+          requests:
+            cpu: 100m
+            memory: 250Mi
+      imagePullSecrets:
+        - name: git-registry-secret
