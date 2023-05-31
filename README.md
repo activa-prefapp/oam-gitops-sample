@@ -6,17 +6,29 @@ Repository for configuration, evaluation and development of gitops integrations 
 
 The purpose of this repository is to serve as an example and basis for a complete integration using github actions and gitops configurations in a kubernetes cluster.
 
-__If you have access to the repository, you will be able to make modifications to the files in the app/ directory in the gitops-test branch, you will be able to see the changes made when the update flow finishes in the url: https://oam-gitops-sample.activa.napptive.dev/__
+_If you have access to the repository, you will be able to make modifications to the files in the __app/ directory__ in the __gitops-test branch__, you will be able to see the changes made when the update flow finishes in the url: https://oam-gitops-sample.activa.napptive.dev/_
 
-__Remember that this is an example repository. To replicate this deployment in your cluster you will have to fulfill all the requirements and make the necessary modifications to namespace, secrets, host, certificates and other information.__
+_Remember that this is an example repository. To replicate this deployment in your cluster you will have to fulfill all the requirements and make the necessary modifications to namespace, secrets, host, certificates and other information._
 
 ## Repository structure and composition
 
-- app/ dockerfile and html index of the test application
+```
+oam-gitops-sample/
+├── .github/
+│   └── workflows/
+├── app/
+│   ├── Dockerfile
+│   └── index.html
+├── infrastructure/
+│   ├── deployment-app.yaml
+│   ├── ingres.yaml
+│   └── service.yaml
+```
+- __.github/workflows/__ actions from github manifest for automatic build of application image and version change in manifest in infrastructure/
 
-- infrastructure/ manifest of the application to be deployed using gitops configurations in kubernetes cluster
+- __app/__ dockerfile and html index of the test application
 
-- github/workflows actions from github manifest for automatic build of application image and version change in manifest in infrastructure/
+- __infrastructure/__ manifest of the application to be deployed using gitops configurations in kubernetes cluster
 
 ## infrastructure requirements
 
